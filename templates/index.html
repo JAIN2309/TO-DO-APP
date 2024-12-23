@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>To-Do List</h1>
+
+<form method="POST" action="/add">
+    <input type="text" name="task" placeholder="Enter a task" required>
+    <button type="submit">Add Task</button>
+</form>
+
+<ul>
+    {% for task in tasks %}
+    <li>
+        {{ task.id }}. {{ task.task }} - {{ task.status }}
+        <a href="{{ url_for('update_task', task_id=task.id) }}">Update</a>
+        <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

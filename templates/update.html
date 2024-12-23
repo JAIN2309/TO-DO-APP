@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Update Task</h1>
+<form method="POST">
+    <input type="text" name="task" value="{{ task.task }}" required>
+    <select name="status">
+        <option value="Incomplete" {% if task.status == 'Incomplete' %}selected{% endif %}>Incomplete</option>
+        <option value="Complete" {% if task.status == 'Complete' %}selected{% endif %}>Complete</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
+{% endblock %}
